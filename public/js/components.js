@@ -12,9 +12,9 @@ window.Cmp = (function () {
   }
 
   function side(team, align, showStar) {
-    const star = showStar ? Follow.starButton(team) : '';
-    const name = `<span class="font-body-md text-sm truncate">${WC.esc(team.name)}</span>`;
-    const flag = WC.flag(team, 'w-7 h-7');
+    const star = showStar ? Follow.starButton(team, 'shrink-0') : '';
+    const name = `<span class="font-body-md text-sm truncate min-w-0">${WC.esc(team.name)}</span>`;
+    const flag = WC.flag(team, 'w-7 h-7 shrink-0');
     return align === 'right'
       ? `<div class="flex items-center gap-2 justify-end min-w-0">${star}${name}${flag}</div>`
       : `<div class="flex items-center gap-2 min-w-0">${flag}${name}${star}</div>`;
