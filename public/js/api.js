@@ -26,10 +26,12 @@ window.WC = (function () {
     const d = new Date(iso);
     return d.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' });
   }
-  // local calendar-day stamp (uses the viewer's timezone, not UTC)
+  // local calendar-day helpers (viewer's timezone, not UTC). offset: 0=today, 1=tomorrow…
   const localYMD = d => `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
-  const isToday = iso => localYMD(new Date(iso)) === localYMD(new Date());
-  const todayLabel = () => new Date().toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+  function isLocalDay(iso, offset = 0) { const t = new Date(); t.setDate(t.getDate() + offset); return localYMD(new Date(iso)) === localYMD(t); }
+  const isToday = iso => isLocalDay(iso, 0);
+  function dayOffsetLabel(offset = 0) { const t = new Date(); t.setDate(t.getDate() + offset); return t.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' }); }
+  const todayLabel = () => dayOffsetLabel(0);
   function tzAbbr() {
     return new Date().toLocaleTimeString([], { timeZoneName: 'short' }).split(' ').pop();
   }
@@ -53,6 +55,6 @@ window.WC = (function () {
   }
 
   return { fetchJSON, getTeams, getGroups, getMatches, getLive, getHealth, esc, kickoffTime, dayKey, tzAbbr, flag, groupByDay,
-           isToday, todayLabel,
+           isToday, isLocalDay, dayOffsetLabel, todayLabel,
            clearCache: () => { for (const k in cache) delete cache[k]; } };
 })();

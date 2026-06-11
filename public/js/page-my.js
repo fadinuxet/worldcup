@@ -6,7 +6,8 @@
   let teams = [], matches = [];
   try { [teams, matches] = await Promise.all([WC.getTeams(), WC.getMatches()]); }
   catch { teamsEl.innerHTML = '<p class="text-error">Could not load your data.</p>'; return; }
-  const byId = Object.fromEntries(teams.map(t => [t.id, t]));
+
+  let selected = null; // team id to filter to; null = all my teams
 
   function emptyState() {
     return `<div class="bg-surface-container rounded-xl border border-dashed border-outline-variant/40 p-8 text-center">
@@ -21,24 +22,41 @@
     const ids = new Set(Follow.list());
     const mine = teams.filter(t => ids.has(t.id));
 
-    if (!mine.length) {
-      teamsEl.innerHTML = emptyState();
-      matchesEl.innerHTML = '';
-      return;
-    }
+    if (!mine.length) { teamsEl.innerHTML = emptyState(); matchesEl.innerHTML = ''; return; }
+    if (selected && !ids.has(selected)) selected = null; // selected team was unfollowed
+
+    // My Teams chips (⭐ unfollows)
     teamsEl.innerHTML = `<div class="flex flex-wrap gap-2">${mine.map(t => `
       <div class="flex items-center gap-2 bg-surface-container rounded-full pl-1 pr-2 py-1 border border-outline-variant/20">
         ${WC.flag(t, 'w-7 h-7')}<span class="font-body-md text-sm">${WC.esc(t.name)}</span>${Follow.starButton(t)}
       </div>`).join('')}</div>`;
 
-    const mineMatches = matches.filter(m => ids.has(m.home.id) || ids.has(m.away.id));
-    const upcomingLive = mineMatches.filter(m => m.status !== 'post');
-    const finished = mineMatches.filter(m => m.status === 'post');
-    const ordered = [...upcomingLive, ...finished.reverse()];
-    matchesEl.innerHTML = ordered.length
-      ? ordered.map(Cmp.matchCard).join('')
-      : '<p class="font-body-md text-on-surface-variant">No matches scheduled yet for your teams.</p>';
+    // filter pills: All + each followed team (tap to see that team only)
+    const pill = (key, label, active, logo = '') =>
+      `<button data-team="${key}" class="tg whitespace-nowrap inline-flex items-center gap-1.5 font-label-match text-xs tracking-widest px-3 py-2 rounded-xl border transition ${active ? 'bg-primary-container text-on-primary-container border-primary-container' : 'bg-surface-container text-on-surface-variant border-outline-variant/30'}">${logo}${label}</button>`;
+    const pills = `<div id="team-pills" class="flex gap-2 overflow-x-auto pb-1 mb-4">
+        ${pill('all', 'ALL', !selected)}
+        ${mine.map(t => pill(t.id, WC.esc(t.abbr), selected === t.id, WC.flag(t, 'w-4 h-4'))).join('')}
+      </div>`;
+
+    // upcoming + live matches for the selected team (or all my teams), grouped by day (shows dates)
+    const relevant = selected ? new Set([selected]) : ids;
+    const list = matches
+      .filter(m => (relevant.has(m.home.id) || relevant.has(m.away.id)) && m.status !== 'post')
+      .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    matchesEl.innerHTML = pills + (list.length
+      ? Cmp.matchList(list)
+      : `<p class="font-body-md text-on-surface-variant">No upcoming matches for ${selected ? 'this team' : 'your teams'}.</p>`);
   }
+
+  // pill clicks (delegated; pills re-render each time)
+  matchesEl.addEventListener('click', e => {
+    const b = e.target.closest('#team-pills .tg');
+    if (!b) return;
+    selected = b.dataset.team === 'all' ? null : b.dataset.team;
+    render();
+  });
 
   render();
   Follow.onChange(() => { render(); WCPush.syncTeams().catch(() => {}); });
