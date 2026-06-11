@@ -2,6 +2,7 @@
 window.UI = (function () {
   const NAV = [
     { href: '/', label: 'Home', icon: 'home' },
+    { href: '/today.html', label: 'Today', icon: 'today' },
     { href: '/matches.html', label: 'Matches', icon: 'sports_soccer' },
     { href: '/groups.html', label: 'Groups', icon: 'leaderboard' },
     { href: '/teams.html', label: 'Teams', icon: 'flag' },
@@ -29,7 +30,7 @@ window.UI = (function () {
     }
     // mobile bottom bar
     const bar = document.createElement('nav');
-    bar.className = 'md:hidden glass-panel bg-surface/90 fixed bottom-0 inset-x-0 z-50 border-t border-outline-variant/20 grid grid-cols-5 h-16';
+    bar.className = 'md:hidden glass-panel bg-surface/90 fixed bottom-0 inset-x-0 z-50 border-t border-outline-variant/20 grid grid-cols-6 h-16';
     bar.innerHTML = NAV.map(n => `
       <a href="${n.href}" class="flex flex-col items-center justify-center gap-0.5 ${isActive(n.href) ? 'text-primary-fixed-dim' : 'text-on-surface-variant'}">
         <span class="material-symbols-outlined text-[22px]">${n.icon}</span>

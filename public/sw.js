@@ -1,9 +1,9 @@
 /* Service worker: offline app-shell cache + web-push handlers. */
-const CACHE = 'wc26-v1';
+const CACHE = 'wc26-v2';
 const SHELL = [
-  '/', '/matches.html', '/groups.html', '/teams.html', '/my.html',
+  '/', '/today.html', '/matches.html', '/groups.html', '/teams.html', '/my.html',
   '/css/app.css', '/js/tw-config.js', '/js/api.js', '/js/follow.js',
-  '/js/components.js', '/js/ui.js', '/js/live.js', '/js/push.js',
+  '/js/components.js', '/js/ui.js', '/js/live.js', '/js/push.js', '/js/page-today.js',
   '/icons/icon.svg', '/manifest.webmanifest',
 ];
 
