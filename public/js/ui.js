@@ -17,7 +17,7 @@ window.UI = (function () {
       <header class="glass-panel bg-surface/80 fixed top-0 inset-x-0 z-50 border-b border-outline-variant/20
                      flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop">
         <div class="flex items-center gap-8">
-          <a href="/" class="font-headline-md text-headline-md font-black tracking-tighter text-primary-fixed-dim">WC<span class="text-on-surface">26</span></a>
+          <a href="/" class="flex items-center gap-1.5 font-headline-md text-headline-md font-black tracking-tighter text-primary-fixed-dim"><span class="text-[22px] leading-none">⚽</span>WC<span class="text-on-surface">26</span></a>
           <nav class="hidden md:flex gap-6 items-center">
             ${NAV.map(n => `<a href="${n.href}" class="font-label-match text-[14px] tracking-widest ${isActive(n.href) ? 'text-primary-fixed-dim font-bold' : 'text-on-surface-variant hover:text-secondary-container'} transition-colors">${n.label}</a>`).join('')}
           </nav>
