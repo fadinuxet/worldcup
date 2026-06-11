@@ -1,0 +1,14 @@
+{
+  "name": "My World Cup 2026",
+  "short_name": "WC26",
+  "description": "Follow your teams at the FIFA World Cup 2026 — live scores & match alerts.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0f14",
+  "theme_color": "#00ff85",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

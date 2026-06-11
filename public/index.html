@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIFA World Cup 2026 — Live Scores & Follow Your Teams</title>
+<meta name="theme-color" content="#00ff85"/>
+<link rel="manifest" href="/manifest.webmanifest"/>
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="/js/tw-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet"/>
+<link href="/css/app.css" rel="stylesheet"/>
+</head>
+<body class="font-body-md bg-surface-container-lowest pb-20 md:pb-8">
+<div id="top-nav"></div>
+<main class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop pt-24">
+
+  <!-- Hero -->
+  <section class="mb-8">
+    <p class="font-label-match text-xs tracking-[0.2em] text-primary-fixed-dim mb-2">JUN 11 – JUL 19, 2026 · 🇺🇸 🇲🇽 🇨🇦</p>
+    <h1 class="font-headline-lg text-4xl md:text-6xl font-black tracking-tight leading-none">FIFA WORLD CUP <span class="text-primary-fixed-dim">2026</span></h1>
+    <p class="font-body-lg text-on-surface-variant mt-3 max-w-xl">48 teams. 104 matches. Follow your teams and get live scores — times shown in your local time (<span id="tz"></span>). <span id="live-count" class="text-primary-fixed-dim font-label-match text-xs"></span></p>
+  </section>
+
+  <!-- Live / Upcoming -->
+  <section class="mb-10">
+    <div class="flex items-center justify-between mb-4">
+      <h2 id="feed-title" class="font-headline-md text-2xl font-bold">Upcoming</h2>
+      <a href="/matches.html" class="font-label-match text-xs tracking-widest text-secondary-container hover:text-primary-fixed-dim">ALL MATCHES →</a>
+    </div>
+    <div id="feed" class="grid gap-3 md:grid-cols-2"></div>
+  </section>
+
+  <!-- Following teaser -->
+  <section id="following-teaser" hidden class="mb-10">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="font-headline-md text-2xl font-bold">Your World Cup</h2>
+      <a href="/my.html" class="font-label-match text-xs tracking-widest text-secondary-container hover:text-primary-fixed-dim">OPEN →</a>
+    </div>
+    <div id="following-strip" class="flex gap-3 flex-wrap"></div>
+  </section>
+
+  <!-- Quicklinks -->
+  <section class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+    <a href="/teams.html" class="bg-surface-container rounded-xl p-4 border border-outline-variant/20 hover:border-primary-container/40 transition">
+      <span class="material-symbols-outlined text-primary-fixed-dim">flag</span>
+      <p class="font-headline-md text-lg mt-2">48 Teams</p><p class="font-label-data text-on-surface-variant">Browse & follow</p></a>
+    <a href="/groups.html" class="bg-surface-container rounded-xl p-4 border border-outline-variant/20 hover:border-primary-container/40 transition">
+      <span class="material-symbols-outlined text-primary-fixed-dim">leaderboard</span>
+      <p class="font-headline-md text-lg mt-2">12 Groups</p><p class="font-label-data text-on-surface-variant">Live standings</p></a>
+    <a href="/matches.html" class="bg-surface-container rounded-xl p-4 border border-outline-variant/20 hover:border-primary-container/40 transition">
+      <span class="material-symbols-outlined text-primary-fixed-dim">sports_soccer</span>
+      <p class="font-headline-md text-lg mt-2">104 Matches</p><p class="font-label-data text-on-surface-variant">Full schedule</p></a>
+    <a href="/my.html" class="bg-surface-container rounded-xl p-4 border border-outline-variant/20 hover:border-primary-container/40 transition">
+      <span class="material-symbols-outlined text-primary-fixed-dim">notifications_active</span>
+      <p class="font-headline-md text-lg mt-2">My World Cup</p><p class="font-label-data text-on-surface-variant">Alerts & your teams</p></a>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/follow.js"></script>
+<script src="/js/components.js"></script>
+<script src="/js/ui.js"></script>
+<script src="/js/live.js"></script>
+<script src="/js/page-home.js"></script>
+</body>
+</html>
