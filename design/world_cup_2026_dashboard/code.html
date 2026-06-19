@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIFA World Cup 2026 | Tournament Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#93000a",
+                    "inverse-on-surface": "#2c3137",
+                    "on-tertiary": "#621100",
+                    "on-tertiary-fixed-variant": "#8a1d00",
+                    "surface": "#0f1419",
+                    "tertiary-fixed": "#ffdad2",
+                    "inverse-surface": "#dee3ea",
+                    "surface-variant": "#30353b",
+                    "on-surface": "#dee3ea",
+                    "on-background": "#dee3ea",
+                    "surface-container": "#1b2025",
+                    "surface-container-highest": "#30353b",
+                    "inverse-primary": "#006d35",
+                    "error": "#ffb4ab",
+                    "outline-variant": "#3b4b3d",
+                    "secondary-container": "#00e3fd",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "on-primary": "#003919",
+                    "surface-bright": "#353a3f",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#ba2a00",
+                    "on-surface-variant": "#b9cbb9",
+                    "surface-container-high": "#252a30",
+                    "primary-fixed-dim": "#00e476",
+                    "on-primary-container": "#007137",
+                    "secondary-fixed-dim": "#00daf3",
+                    "on-error-container": "#ffdad6",
+                    "surface-container-lowest": "#0a0f14",
+                    "tertiary-container": "#ffd5cb",
+                    "on-secondary-container": "#00616d",
+                    "primary-fixed": "#61ff97",
+                    "surface-dim": "#0f1419",
+                    "secondary-fixed": "#9cf0ff",
+                    "on-secondary": "#00363d",
+                    "secondary": "#bdf4ff",
+                    "tertiary": "#fffaf9",
+                    "primary": "#f0ffee",
+                    "on-primary-fixed-variant": "#005227",
+                    "background": "#0f1419",
+                    "outline": "#849584",
+                    "on-primary-fixed": "#00210c",
+                    "on-tertiary-fixed": "#3c0700",
+                    "surface-tint": "#00e476",
+                    "surface-container-low": "#171c21",
+                    "on-secondary-fixed": "#001f24",
+                    "primary-container": "#00ff85",
+                    "on-secondary-fixed-variant": "#004f58"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xs": "4px",
+                    "gutter": "16px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "unit": "4px",
+                    "margin-desktop": "64px",
+                    "xl": "48px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Anybody"],
+                    "display-lg": ["Anybody"],
+                    "headline-md": ["Anybody"],
+                    "headline-lg-mobile": ["Anybody"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-match": ["JetBrains Mono"],
+                    "label-data": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "display-lg": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-match": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "label-data": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0a0f14;
+            color: #dee3ea;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .score-ticker-scroll {
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .live-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .glass-panel {
+            background: rgba(48, 53, 59, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 fixed top-0 w-full z-50 border-b border-outline-variant/20 flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-8">
+<h1 class="font-headline-md text-headline-md font-black tracking-tighter text-primary dark:text-primary-fixed-dim">
+                FIFA World Cup 2026
+            </h1>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-label-match text-primary font-bold transition-colors" href="#">Home</a>
+<a class="font-label-match text-on-surface-variant hover:text-secondary-container transition-colors" href="#">Matches</a>
+<a class="font-label-match text-on-surface-variant hover:text-secondary-container transition-colors" href="#">Groups</a>
+<a class="font-label-match text-on-surface-variant hover:text-secondary-container transition-colors" href="#">Teams</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors p-2">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors p-2 relative">
+                notifications
+                <span class="absolute top-2 right-2 w-2 h-2 bg-primary-container rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMXhEm-LiO80pXbKFsmzfjCcYsvzpcfJQe3K9V7KGC_T4duJ6IHqxJBtVS07YTiTuEAtow1cNwQhblhXXurY6yHJtR2xsbk9FmOEeKnejh7JpYkQfPc1qspdv8YsPcRUxCnfiwTl-emk6yxA4x8QhAA4S5gn1W7QI-dkz4bPKED0bCvPKMHJdVO5Wxb4F4PdZctCkVRVWWHONZfYr7_1ju0usf6LxpDqwbXcE_XDgakQ8-cEXZj3M2FMLIAwufhmVudtnHIusr5ji2"/>
+</div>
+</div>
+</header>
+<!-- Score Ticker -->
+<section class="mt-16 bg-surface-container border-b border-outline-variant/10 overflow-hidden whitespace-nowrap h-12 flex items-center">
+<div class="score-ticker-scroll flex items-center gap-12 px-margin-desktop">
+<!-- Ticker Item -->
+<div class="flex items-center gap-4 border-r border-outline-variant/20 pr-12">
+<span class="text-primary-fixed-dim font-label-data uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full live-pulse"></span> Live
+                </span>
+<span class="font-label-match">USA 2 - 1 MEX</span>
+<span class="text-on-surface-variant font-label-data">78'</span>
+</div>
+<div class="flex items-center gap-4 border-r border-outline-variant/20 pr-12">
+<span class="text-on-surface-variant font-label-data uppercase tracking-widest">Final</span>
+<span class="font-label-match">CAN 0 - 0 FRA</span>
+<span class="text-on-surface-variant font-label-data">FT</span>
+</div>
+<div class="flex items-center gap-4 border-r border-outline-variant/20 pr-12">
+<span class="text-primary-fixed-dim font-label-data uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full live-pulse"></span> Live
+                </span>
+<span class="font-label-match">ARG 3 - 2 BRA</span>
+<span class="text-on-surface-variant font-label-data">45+2'</span>
+</div>
+<!-- Duplicate for infinite scroll -->
+<div class="flex items-center gap-4 border-r border-outline-variant/20 pr-12">
+<span class="text-primary-fixed-dim font-label-data uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full live-pulse"></span> Live
+                </span>
+<span class="font-label-match">USA 2 - 1 MEX</span>
+<span class="text-on-surface-variant font-label-data">78'</span>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<main class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-lg grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Hero Section / Featured Matches -->
+<section class="md:col-span-8 flex flex-col gap-lg">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Live Now</h2>
+<button class="font-label-match text-secondary-container flex items-center gap-2 hover:underline">
+                    View All Matches <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Match Card Grid -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Live Match Card -->
+<div class="bg-surface-container p-lg rounded-lg border-l-4 border-primary-container group transition-all duration-300 hover:bg-surface-container-high cursor-pointer relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<div class="bg-primary-container text-on-primary-container font-label-data px-3 py-1 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 bg-on-primary-container rounded-full live-pulse"></span> LIVE
+                        </div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-xl">
+<!-- Team A -->
+<div class="flex flex-col md:flex-row items-center gap-md text-center md:text-left flex-1">
+<div class="w-20 h-20 rounded-full border-2 border-outline-variant p-1">
+<img alt="USA Flag" class="w-full h-full rounded-full object-cover" data-alt="A high-resolution, detailed flag of the United States of America with its iconic stars and stripes, depicted with realistic fabric textures and cinematic lighting. The aesthetic is professional and clean, fitting a premier international sports tournament dashboard with high contrast and sharp focus on the embroidery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA99Jr8ONy7RrcPpbmD84cwyzUYZQFq_wfWxOO5_RV0fdb3UDLg6mBDimVPpspTey13eRnOg2_C_qf2LkuM8sPAcgX1eG5Pg50noxKjMfAqJxNr6LO0TVDibvOXwZpoG8w0x3pqD5rkSAL9BcEjTMzuZuosPeEbREJ7iX8bj94Hrr4xNzLwZeUqjdhhsYm9wPi0TU09z9Oa_pZ6k8TktviWteCooMaxZWwuCi5La8A-Jc7lRLjPYbWXcB1f3kulUGg2ec7D3oXReLdM"/>
+</div>
+<div>
+<div class="font-label-data text-on-surface-variant mb-1">USA</div>
+<div class="font-headline-md text-headline-md">United States</div>
+</div>
+</div>
+<!-- Score Display -->
+<div class="flex flex-col items-center justify-center gap-sm">
+<div class="font-label-match text-display-lg text-primary flex items-center gap-xl leading-none">
+<span>2</span>
+<span class="text-surface-variant">:</span>
+<span>1</span>
+</div>
+<div class="font-label-data text-on-surface-variant bg-surface-container-highest px-4 py-1 rounded-full">
+                                78' Second Half
+                            </div>
+</div>
+<!-- Team B -->
+<div class="flex flex-col md:flex-row-reverse items-center gap-md text-center md:text-right flex-1">
+<div class="w-20 h-20 rounded-full border-2 border-outline-variant p-1">
+<img alt="Mexico Flag" class="w-full h-full rounded-full object-cover" data-alt="The national flag of Mexico, showcasing the vibrant green, white, and red vertical stripes with the detailed central emblem of an eagle perched on a cactus. The image features soft shadows and high-definition texture, maintaining a competitive and prestigious atmosphere for a global football championship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxKng1CPEPIziVsxyxO_sYfunSHM59pE7Q3Ch05Fg2nd9UtI_dwGOKkUAhflF8a1G1ZV3Nxohd_b8bTltv_TgGOOh3k4cwyaMVEfqe5BYGySm2ns2ApruvlMBKG9YJJ2Q_dO_xIG1ntj6c_oFf0Sq6JbSLYeOcu1GBb-UbnWtqnkg2ziu54cpomgWgw42CatBIDVemFilWR--OtSPGsSwICVnFBvrI5IQt30XJ4k5wQut2RxJvardg11EiNb6wcN4x51qQ4sdRBZcI"/>
+</div>
+<div>
+<div class="font-label-data text-on-surface-variant mb-1">MEX</div>
+<div class="font-headline-md text-headline-md">Mexico</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Match Cards (Scheduled) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Scheduled Match 1 -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant/10 hover:border-secondary-container/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-center mb-md">
+<span class="font-label-data text-on-surface-variant">Group C • 19:00</span>
+<span class="material-symbols-outlined text-on-surface-variant">star</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A crisp, high-contrast national badge of Brazil with its vibrant yellow and green colors. The lighting is bright and modern, creating an electric and celebratory feel consistent with a world-class football tournament interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsP_fiESPyk1kDxUnhvzpEwTkbYwlHTg7qB07xcWSBuQJIqpNJUD9u--lPkSq-3HKP7RwMhn-ESR0u0rMFisEKy5kdZ_MZCEyrrrGe9dMKlIrLLK0pRJ-_nlHD9upgO46W-e0aezG4WidBmLb_-nEkr5dqhawaswqWXOYMIQNjAzl9iLgy4Sail583CoiRNmXnxf_WuMg8xv8qPfmknTeoWijS8oid_LF89PlMNdmjVNeNeX3b7JUK49vEeqe82oJdBQx5F1PA8-1U"/>
+<span class="font-label-match">BRA</span>
+</div>
+<span class="font-label-data text-surface-variant">VS</span>
+<div class="flex items-center gap-3">
+<span class="font-label-match">GER</span>
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A sleek and professional representation of the German national flag badge, featuring the black, red, and gold stripes. The style is clean, modern, and high-contrast, set against a dark obsidian background typical of a premium sports data application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-c8JzPVGrGPhkZsKj9fDOMRbUgyncEQrl0sRcSXDdzBX2094x8CCQfbwMpJF9Eo0NCTaml5g8oE6ier9nb2lqHHmqWnU4E63PAO9W9L9ARY4rYeZaTqXCqIRIR118cGIFwnLliK9Tjxx20EXIVb7YLTpsZGqUsqj8ERI2KoraknzEQDea4Qxy-XEYys3jhgid0knrZ_-mZ2Nf94W3STU_hkxm0hTsjQCoKT8b51ReUjWUDYLoeJ4CU814LIoqYfVPUBsVC-v0XxDQ"/>
+</div>
+</div>
+</div>
+<!-- Scheduled Match 2 -->
+<div class="bg-surface-container p-md rounded-lg border border-outline-variant/10 hover:border-secondary-container/50 transition-colors cursor-pointer">
+<div class="flex justify-between items-center mb-md">
+<span class="font-label-data text-on-surface-variant">Group A • 21:30</span>
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A detailed digital badge of the Spain national football team colors, showing the bold red and yellow. The visual style is sharp and technical, with a slight inner glow that adds depth and a premium look to the tournament dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtqSRJu_LPwdlCoUkduCVRkkONgcudiLRUzIjtRCex3xGoauZmfTSSdqB-1hcMXmmvo9vOJ8auonZ03RiEFd0OQzYQPs1oHpaB5nFN9QSWnm_zaib7OmActWV47lo4IIWhIGmDGSYW8D4YmY7kjwdWuS2gymHp53m0MEVEVUSkapu6q7fb1TPRJ8RoR-JZDHVPEeokd0r0BlERLLMtCsY_slFqTLXVRQa0tyT_quoe4Wos2NPgkij_7A7sROO9pPddBwOO6EzKKx4c"/>
+<span class="font-label-match">ESP</span>
+</div>
+<span class="font-label-data text-surface-variant">VS</span>
+<div class="flex items-center gap-3">
+<span class="font-label-match">JPN</span>
+<img class="w-8 h-8 rounded-full border border-outline-variant" data-alt="The Japanese national flag badge, featuring the iconic red circle on a white background. The rendering is minimalist and high-precision, emphasized by a slight silver stroke and presented within a modern, data-driven UI environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWmlJXs-MEJt6n5AEf_q7Zexqs89kcu-n7TB0DR4YsKp2SEzcQ-GNeykWt1xrCCgI5FFyb-ykXPGMllBsljrn8-2c_g3UbEo-3omDwQBOvRhzF2c3xAeB3Znq4YqeJ-qNQ-imubumPOtWu4Aw_cm5FSbo4IQy4E-9hFrx4fYscFgZH_zvzAjStxnsz50KK6hSxCJ02KOAIARlwciwPUOgsfJyg85-1dYtu1FjTn3TueWQr7JWYiiYfRPhYgA--1XiQ-oAlhBWqGigD"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- News Section -->
+<section class="mt-lg">
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Latest Updates</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- News Card 1 -->
+<div class="group cursor-pointer overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A breathtaking, cinematic shot of a massive, state-of-the-art stadium in North America, packed with a sea of cheering fans under brilliant night lights. The image is captured with a wide-angle lens, showing high-energy celebration and vibrant, multi-colored team banners. The atmosphere is electric and celebratory, using high-contrast lighting and deep obsidian shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxPfluOOa95TWjW9QxskF6IPtdfvemMumSkjnmPVOxsfsxw3hUzfbhDqXhuuSEa_u_Aa5pDYsLdgxXCJJezvC2sl7o3hKzeSUzgE5s7o0fOQ6pXBcsGAHyZD91-klR0U4SwiGnmyhxx1tRPghT9UynayP6nZOGQEwXokG_6PQpCY4Z60aKxZCTTvc8c9OQ2C8F0J57WRBIBmv67XY73Tbjfrida4iI-dFMX08Tbq0s0TLPCDf_bap1ug-qU8uMU09KFT89nlbOJ16W"/>
+<div class="absolute bottom-0 left-0 w-full p-lg bg-gradient-to-t from-surface-container-lowest to-transparent">
+<span class="font-label-data text-primary-container bg-on-primary/50 px-2 py-1 rounded">MATCH REPORT</span>
+<h4 class="font-headline-md text-headline-md mt-sm leading-tight">Mexico City erupts as fans celebrate dramatic opener</h4>
+</div>
+</div>
+</div>
+<!-- News Card 2 -->
+<div class="group cursor-pointer overflow-hidden rounded-xl bg-surface-container-high border border-outline-variant/10">
+<div class="aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An intense, high-action close-up of a professional football player mid-sprint during a World Cup match. Sweat and determination are visible under sharp stadium spotlights, with a blurred background of the pitch and fans. The color palette is driven by energetic blues and stadium greens, emphasizing forward motion and competitive grit in a modern data-driven style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ4mGIAeox3Kzu6EwKmlkUiaW3ljsXR9NexPDHpXYZdRdWXX1psboEmw0PCBjYCG2uHS4rtIBTnY_yN9Jg9Vh6mJ9v748yfA4cKXCTwXwBeazyTspDeyQcUeHfmqBSN6n76bLkQRdMa_-x1UyR5dWY7KyfqBojljZfFUDCroBN_QuBCmITakeNHCsM5encq4N7HVtvVEwI3MYJcxe__8eCKwKqDT-pW8yG1X4G04SdwH5ySLUpMKzWtY1Z1pzxPSHlFer0ALkLEM2J"/>
+<div class="absolute bottom-0 left-0 w-full p-lg bg-gradient-to-t from-surface-container-lowest to-transparent">
+<span class="font-label-data text-secondary-container bg-on-secondary/50 px-2 py-1 rounded">INJURY NEWS</span>
+<h4 class="font-headline-md text-headline-md mt-sm leading-tight">Key midfielder ruled out for remainder of Group Stage</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<!-- Sidebar Widgets -->
+<aside class="md:col-span-4 flex flex-col gap-lg">
+<!-- Group Standings Widget -->
+<div class="bg-surface-container p-md rounded-xl border border-outline-variant/20">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-label-match text-on-surface">GROUP A STANDINGS</h3>
+<button class="font-label-data text-primary-fixed-dim hover:underline">Full Table</button>
+</div>
+<div class="flex flex-col">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-2 px-2 py-1 font-label-data text-on-surface-variant text-[10px] uppercase tracking-wider">
+<div class="col-span-1">#</div>
+<div class="col-span-5">TEAM</div>
+<div class="col-span-2 text-center">MP</div>
+<div class="col-span-2 text-center">GD</div>
+<div class="col-span-2 text-right">PTS</div>
+</div>
+<!-- Table Rows -->
+<div class="space-y-px">
+<div class="grid grid-cols-12 gap-2 items-center px-2 py-3 bg-surface-container-high border-l-4 border-primary-container">
+<div class="col-span-1 font-label-match font-bold">1</div>
+<div class="col-span-5 flex items-center gap-2">
+<img class="w-5 h-5 rounded-full" data-alt="Small circular badge icon for the USA national flag, sharp and clear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzkB0kLanD5Xfte0auvsp4YRiCng7Eb-N35hdJ0y4uwsbMIEK_9OFpd8k4fnZurrgdfyLynu2k56jVJhE5OjE8rMuaaXDFdt9Pkx9_HfEuzgMQwWXzJK9C4vRmFdGvEwg4mK63VDUKKr63qdp9LcSziWNdREHqAUMeX2VvIkG_DP_pyfg36U9v0zc0a4GZYm4zZIj19NUodjSCvc5mSnn2cH3-eFdOKPU67eta9cdguxxsd3lZzYFmLzB_mEpLghQYGycbixMMJ-xF"/>
+<span class="font-label-match text-primary">USA</span>
+</div>
+<div class="col-span-2 text-center font-label-data">2</div>
+<div class="col-span-2 text-center font-label-data">+3</div>
+<div class="col-span-2 text-right font-label-match font-bold">6</div>
+</div>
+<div class="grid grid-cols-12 gap-2 items-center px-2 py-3 bg-surface-container border-l-4 border-primary-container/40">
+<div class="col-span-1 font-label-match font-bold">2</div>
+<div class="col-span-5 flex items-center gap-2">
+<img class="w-5 h-5 rounded-full" data-alt="Small circular badge icon for the Italy national flag." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqwCY3JlBLNV7VEzrBEzioJk-je6vgpTlvXIHIOUzcSacOIOuBRGfz_v6aAd5KVGKhkv0vZ44Qt7ORlbdqfyGgeJfKc1uMPR76V1sALTneuGoqIuyouYMBqzT7SlSSYRBAiSlVY6faqB71TiLCIonIN84JpCg1BIgvpW3JWd-gG65uNbPyQdPsV-5fxOOYQpV-bCRQLTozOF1-VY_y7l1A9fhLP4ed645gOum-GQcP_OZRhyaNkIygqw4Y_5gFb2Qq8HVcii3k0vL6"/>
+<span class="font-label-match">ITA</span>
+</div>
+<div class="col-span-2 text-center font-label-data">2</div>
+<div class="col-span-2 text-center font-label-data">+1</div>
+<div class="col-span-2 text-right font-label-match font-bold">4</div>
+</div>
+<div class="grid grid-cols-12 gap-2 items-center px-2 py-3 bg-surface-container-high border-l-4 border-transparent">
+<div class="col-span-1 font-label-match font-bold">3</div>
+<div class="col-span-5 flex items-center gap-2">
+<img class="w-5 h-5 rounded-full" data-alt="Small circular badge icon for the South Korea national flag." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH2459CfjCAW7F2O6jnRVUTlt7UusQqUJqs5hmRSNVsgIav2Xlm4V27ygQhopQcBDrrUg-kYkhVk5RiyMNqhYe9E__XBPm_t31i5vpAA71A750uf7nK2k0_T-kHLSG-HliIaTQAItUQ_8TbiDuexvRyP3Kcm4A21BMViT_qrfb6DGIH3w5ImbtJd3_Ialv8MfJ_IovMOfpzRA_QzPpk9qdpkKWEwyOYiIIDSbn8lbaTxXao0af10b9TrSKaFxjHB1xhUUnCUQAWAFW"/>
+<span class="font-label-match">KOR</span>
+</div>
+<div class="col-span-2 text-center font-label-data">2</div>
+<div class="col-span-2 text-center font-label-data">-1</div>
+<div class="col-span-2 text-right font-label-match font-bold">1</div>
+</div>
+<div class="grid grid-cols-12 gap-2 items-center px-2 py-3 bg-surface-container border-l-4 border-transparent">
+<div class="col-span-1 font-label-match font-bold opacity-40">4</div>
+<div class="col-span-5 flex items-center gap-2">
+<img class="w-5 h-5 rounded-full" data-alt="Small circular badge icon for the Nigeria national flag." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcliYbNsxpAzwbw3PdhaVc7l7PQxp_E942rY3Zl-BZ6oD3VK7SwNsDBnYMrHtF0KDQ0YiKmsZgr8r4wrybIu_1WPLK06xyrXwFdoXaXkbir8zQDRHT0ufq_So1vgj9nt0N72Hms4TU65YcLsiLXOpriatvK8OlNlnOkV_sTPOCKpSMju3pu82XD9uakdq3d_hYRBKaABxqCWx7lMCQ6BvMlVtaPf2MlyJZYc5xuDfUVsvzdM360KHO96qWRsj0-7WILUGR92ZYqQnN"/>
+<span class="font-label-match">NGA</span>
+</div>
+<div class="col-span-2 text-center font-label-data">2</div>
+<div class="col-span-2 text-center font-label-data">-3</div>
+<div class="col-span-2 text-right font-label-match font-bold">0</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Host Cities Map Preview -->
+<div class="bg-surface-container-high rounded-xl border border-outline-variant/20 overflow-hidden">
+<div class="relative h-48 bg-surface-container-lowest">
+<!-- Map Placeholder -->
+<div class="absolute inset-0 opacity-40" data-location="North America" style="">
+<img class="w-full h-full object-cover" data-alt="A stylized, technical map of North America featuring glowing nodes representing host cities for the 2026 World Cup. The map uses a sophisticated obsidian and energetic blue color palette, with high-contrast lines and a modern digital aesthetic that suggests data connectivity and global scale." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKkfronZ77VhMtDyGDuOeNnzUhobVx2aunFTcYJVruBaPnJivfK2eBr6l7EwJ9vCG9945CfzSL1y64oDe-qB4ozEPaWa-A1nkjUjDA0uW4-s8UcoKYtM95gVX7dvPchqSeEVD1V5Pwwv8FM6NmnvDVx2IAcs2ei-sHwGYNvZsLpMpTcW7RFeiqeJo3O_p_7g6D_edRIFnmr1Gg6yNHWdVom2TOVE-RCjC8QlHlDYRO9ze7U-XT5AckGhl8ceCKzaFkEoCCloHD5fmd"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-md">
+<div class="font-label-match text-primary mb-1">Host Cities</div>
+<div class="font-label-data text-on-surface-variant">16 Cities across 3 Nations</div>
+</div>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-center text-sm">
+<span class="flex items-center gap-2"><span class="w-2 h-2 bg-primary-container rounded-full"></span> New York/New Jersey</span>
+<span class="text-on-surface-variant font-label-data">MetLife Stadium</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="flex items-center gap-2"><span class="w-2 h-2 bg-primary-container rounded-full"></span> Mexico City</span>
+<span class="text-on-surface-variant font-label-data">Estadio Azteca</span>
+</div>
+<button class="w-full mt-md bg-secondary-container text-on-secondary-container font-label-match py-3 rounded-lg text-sm hover:opacity-90 transition-opacity">
+                        Explore Venues
+                    </button>
+</div>
+</div>
+<!-- Ad / Promotion Panel -->
+<div class="bg-gradient-to-br from-on-primary-container to-surface-container p-lg rounded-xl border border-primary-container/20 relative overflow-hidden group">
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-primary mb-sm">My WC Fan Pass</h4>
+<p class="font-body-md text-on-surface-variant text-sm mb-lg">Unlock exclusive content, priority ticketing, and 3D match replays.</p>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-lg font-label-match active:scale-95 transition-transform">
+                        Join Now
+                    </button>
+</div>
+<div class="absolute -right-8 -bottom-8 opacity-20 transform group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+</div>
+</div>
+</aside>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/90 backdrop-blur-xl dark:bg-surface/90 border-t border-outline-variant/10">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full py-1 px-4 scale-105 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-data">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-data">Matches</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">table_rows</span>
+<span class="font-label-data">Groups</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="font-label-data">Teams</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-data">My WC</span>
+</button>
+</nav>
+<!-- Floating Action Button (Contextual) -->
+<button class="fixed bottom-24 right-margin-mobile md:bottom-12 md:right-margin-desktop z-40 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-all">
+<span class="material-symbols-outlined text-[32px]">stadium</span>
+</button>
+<script>
+        // Micro-interactions for score updates simulation
+        document.addEventListener('DOMContentLoaded', () => {
+            const ticker = document.querySelector('.score-ticker-scroll');
+            // Logic to occasionally flash or update ticker items could go here
+            
+            // Hover effect for cards to add neon stroke
+            const cards = document.querySelectorAll('.bg-surface-container');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.boxShadow = '0 0 20px rgba(0, 255, 133, 0.05)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body></html>

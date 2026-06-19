@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIFA World Cup 2026 | Groups &amp; Standings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "inverse-on-surface": "#2c3137",
+                        "on-tertiary": "#621100",
+                        "on-tertiary-fixed-variant": "#8a1d00",
+                        "surface": "#0f1419",
+                        "tertiary-fixed": "#ffdad2",
+                        "inverse-surface": "#dee3ea",
+                        "surface-variant": "#30353b",
+                        "on-surface": "#dee3ea",
+                        "on-background": "#dee3ea",
+                        "surface-container": "#1b2025",
+                        "surface-container-highest": "#30353b",
+                        "inverse-primary": "#006d35",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#3b4b3d",
+                        "secondary-container": "#00e3fd",
+                        "tertiary-fixed-dim": "#ffb4a2",
+                        "on-primary": "#003919",
+                        "surface-bright": "#353a3f",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#ba2a00",
+                        "on-surface-variant": "#b9cbb9",
+                        "surface-container-high": "#252a30",
+                        "primary-fixed-dim": "#00e476",
+                        "on-primary-container": "#007137",
+                        "secondary-fixed-dim": "#00daf3",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#0a0f14",
+                        "tertiary-container": "#ffd5cb",
+                        "on-secondary-container": "#00616d",
+                        "primary-fixed": "#61ff97",
+                        "surface-dim": "#0f1419",
+                        "secondary-fixed": "#9cf0ff",
+                        "on-secondary": "#00363d",
+                        "secondary": "#bdf4ff",
+                        "tertiary": "#fffaf9",
+                        "primary": "#f0ffee",
+                        "on-primary-fixed-variant": "#005227",
+                        "background": "#0f1419",
+                        "outline": "#849584",
+                        "on-primary-fixed": "#00210c",
+                        "on-tertiary-fixed": "#3c0700",
+                        "surface-tint": "#00e476",
+                        "surface-container-low": "#171c21",
+                        "on-secondary-fixed": "#001f24",
+                        "primary-container": "#00ff85",
+                        "on-secondary-fixed-variant": "#004f58"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "gutter": "16px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "unit": "4px",
+                        "margin-desktop": "64px",
+                        "xl": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Anybody"],
+                        "display-lg": ["Anybody"],
+                        "headline-md": ["Anybody"],
+                        "headline-lg-mobile": ["Anybody"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-match": ["JetBrains Mono"],
+                        "label-data": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-lg": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-match": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "label-data": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .qualification-glow {
+            box-shadow: inset 1px 0 0 0 #00ff85;
+        }
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        body {
+            background-color: #0f1419;
+            color: #dee3ea;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(26, 32, 38, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 75, 61, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 fixed top-0 w-full z-50 border-b border-outline-variant/20 flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop">
+<div class="flex items-center gap-8">
+<h1 class="font-headline-md text-headline-md font-black tracking-tighter text-primary dark:text-primary-fixed-dim">FIFA World Cup 2026</h1>
+<nav class="hidden md:flex gap-6">
+<a class="font-label-data text-label-data text-on-surface-variant hover:text-secondary-container transition-colors uppercase tracking-widest" href="#">Home</a>
+<a class="font-label-data text-label-data text-on-surface-variant hover:text-secondary-container transition-colors uppercase tracking-widest" href="#">Matches</a>
+<a class="font-label-data text-label-data text-primary font-bold transition-colors uppercase tracking-widest" href="#">Groups</a>
+<a class="font-label-data text-label-data text-on-surface-variant hover:text-secondary-container transition-colors uppercase tracking-widest" href="#">Teams</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary-container transition-colors active:scale-95 transition-transform" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary-container transition-colors active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATSXY6zCQWlDm14K8ngWjdNFd8vlMRflxknlHH9FNPMRHF3f_4jvZfOrZPkfvKIRtqnYK46TvLIIfjWbg5xwhF78rY_jj1wW9flHZx4Umna5lP4H5GQu4kgeHzDPbN6n7DUywo2ceWZgVtBUsBXvD261zM8bLFwbD6ylIA-lCGxSwXb73QvEb_FZsJpP43Y3ELJcqNIZ2BQpgcM0YvTQtot_tMUobog3jEg2FZ6ks74e7wrBlT3BB3zageswoir221bUi2ZfZZfcQ-"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Hero Header -->
+<div class="relative mb-12 overflow-hidden rounded-xl bg-surface-container-low p-8 md:p-12 border border-outline-variant/10">
+<div class="relative z-10">
+<span class="font-label-data text-label-data text-primary-container bg-on-primary/20 px-3 py-1 rounded-full uppercase tracking-[0.2em] mb-4 inline-block">Official Standings</span>
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-primary max-w-2xl mb-4">ROAD TO THE FINAL.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Track the journey of 48 nations across 12 groups. The top two from each group and the eight best third-placed teams advance to the Round of 32.</p>
+</div>
+<!-- Background Graphic -->
+<div class="absolute right-0 top-0 h-full w-1/2 opacity-20 pointer-events-none skew-x-[-20deg] translate-x-20">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-primary-container to-secondary-container"></div>
+</div>
+</div>
+<!-- Groups Grid -->
+<div class="group-grid">
+<!-- JavaScript will populate 12 groups here for efficiency but I'll write the HTML for a few then script the rest to keep it performant and complete -->
+<!-- Group A (Manual for Structure) -->
+<section class="glass-panel p-6 rounded-xl border-l-4 border-l-primary-container transition-all hover:scale-[1.02] duration-300">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">GROUP A</h3>
+<span class="font-label-data text-label-data text-on-surface-variant opacity-50 uppercase tracking-tighter">United States • Mexico • Canada</span>
+</div>
+<div class="w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="font-label-data text-label-data text-on-surface-variant opacity-60 border-b border-outline-variant/20">
+<th class="pb-3 font-medium">TEAM</th>
+<th class="pb-3 text-center font-medium">P</th>
+<th class="pb-3 text-center font-medium">GD</th>
+<th class="pb-3 text-center font-medium">PTS</th>
+</tr>
+</thead>
+<tbody class="font-label-match text-label-match">
+<!-- Team 1 -->
+<tr class="group/row transition-colors hover:bg-surface-container-high/50 border-b border-outline-variant/10">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-primary-container rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="USA" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxYpzE58xXZi_By4K2i9Zdj8-smuZbK7cJWjnVmHC_3FYgb4A5KkmjbsJML602O7zvWH9oskqtpTrgTLZ6gUoYvtnnkJ0Xbk21rScz8Up_L8bxLdtgJve5KIdYhyKld1-OtFYK2tUg2paBtdu-zCAypr5enA5iLHXafk8JKJpnEfM38C_sjtciFWrNOce7nC6C2CoM_JlvqRipUGqbM45w0kmUo2DqdONFP4MnOTlMstVf-9dLndrjVh2j8Xk37cDZbOh6znp54UZv"/>
+</div>
+<span class="text-primary font-bold">USA</span>
+</td>
+<td class="py-4 text-center text-on-surface">3</td>
+<td class="py-4 text-center text-on-surface font-mono">+5</td>
+<td class="py-4 text-center text-primary-container font-black">9</td>
+</tr>
+<!-- Team 2 -->
+<tr class="group/row transition-colors hover:bg-surface-container-high/50 border-b border-outline-variant/10">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-primary-container rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="MEX" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJn8KmXhAaCs1ZMJs6eV3rZy1mye-rs2ju02yMrRWaDOinzpHVVwkBJbK1N-56EqhBq6wYeQODBo0uHMZL2CsqK9gqx87og36EFXrXC_dfivMkO-6A8yRswHsN8SO2LE8eAWJIv_agxnv4vgAKcy-2pJNAjY8rozQ1_wqSA9uBEBbwnbQEJ3tSPOLviGdyIuJMhQVLw0kZKM4g-fClUItqRZdjyP2xXjYoi911CQlVLXjXhXXr7rtKia65MB-xTG8w0jK8HWhvrrz9"/>
+</div>
+<span class="text-primary">MEX</span>
+</td>
+<td class="py-4 text-center text-on-surface">3</td>
+<td class="py-4 text-center text-on-surface font-mono">+2</td>
+<td class="py-4 text-center text-primary-container font-black">6</td>
+</tr>
+<!-- Team 3 -->
+<tr class="group/row transition-colors hover:bg-surface-container-high/50 border-b border-outline-variant/10">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-outline-variant/20 rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="POL" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk7zbMCyS42B10BsPlqLnbbZ0H8jwEHaBPMK6ItIguSb9PzIBb7an640fcxmRHyubXMRCsaPkNt_yzlr4b2XihHMOkrSVPlPZmaySnOjdIMrh1TJg-c6va5b5B21pEmU7tWSHXo729rw3CcdiNwB7F8fb8eI15MEGFZAK0vNjjRBECv8fw4cVx8rxNqKjQEq5yZYyt959kvgooV0ewvTxqNntL_wG0Jc55vic3jU9DRYFFJZdsNYpkHHU0LGsmdVlpVUTqCQLu5LKl"/>
+</div>
+<span class="text-on-surface-variant">POL</span>
+</td>
+<td class="py-4 text-center text-on-surface">3</td>
+<td class="py-4 text-center text-on-surface font-mono">-1</td>
+<td class="py-4 text-center text-on-surface-variant font-black">3</td>
+</tr>
+<!-- Team 4 -->
+<tr class="group/row transition-colors hover:bg-surface-container-high/50">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-outline-variant/20 rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="CMR" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHbK6Vvro6Mb1JP2bUYfK6RZNRC9IWI61vsuOQAqkq1cTKN3b3kfVUmZXoLa08L228swgPp_17to5kMp72IhmMgNpXjw3HD9Q4XzKdZOC8fOKfTyFXtNS0ZSrOZGhT8HwijmBzReaNVwSdeMovg4aKbD4-XLkKSM39fSX_3vcUluB65YTt_AUhg8-ae718LsQDhpc_cb_WhyXD2GDm7pxzCLk2BYrxjaYT0m9rYhS35fEdBghMgixU2fpxHlDh48HCCD9lQ9AA9157"/>
+</div>
+<span class="text-on-surface-variant">CMR</span>
+</td>
+<td class="py-4 text-center text-on-surface">3</td>
+<td class="py-4 text-center text-on-surface font-mono">-6</td>
+<td class="py-4 text-center text-on-surface-variant font-black">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Group B (Repeated logic for visual density) -->
+<section class="glass-panel p-6 rounded-xl border-l-4 border-l-secondary-container transition-all hover:scale-[1.02] duration-300">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-headline-md text-secondary">GROUP B</h3>
+<span class="font-label-data text-label-data text-on-surface-variant opacity-50 uppercase tracking-tighter">East Coast Cluster</span>
+</div>
+<div class="w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="font-label-data text-label-data text-on-surface-variant opacity-60 border-b border-outline-variant/20">
+<th class="pb-3 font-medium">TEAM</th>
+<th class="pb-3 text-center font-medium">P</th>
+<th class="pb-3 text-center font-medium">GD</th>
+<th class="pb-3 text-center font-medium">PTS</th>
+</tr>
+</thead>
+<tbody class="font-label-match text-label-match">
+<tr class="border-b border-outline-variant/10">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-primary-container rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="ARG" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8C51SYI8ONIrc-FsxDAYD1687V1Axj2bCkh9dY6NzeC4YPXXUbwJPLBgwDu7YNzoz98nekNK9YplxDy-cwcLH33T6ZjXF9LvxPqxvUkAfPh12DbMG8z5mys-OkAFNWsxLt0lcDmwYUBQ9bYjKDZRRzizFGbANHf8uknlvY4S2nOP9bFI9thxQRM_iaQUA6o022Xx819JUjWdU2wgalVGfMrERtMWTPG8oYNTqa3nX00ized98rmoLz0RNSbyQWagGCZPyykP4BVj4"/>
+</div>
+<span class="text-primary font-bold">ARG</span>
+</td>
+<td class="py-4 text-center text-on-surface">2</td>
+<td class="py-4 text-center text-on-surface font-mono">+4</td>
+<td class="py-4 text-center text-primary-container font-black">6</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-primary-container rounded-full pulse-opacity"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="KOR" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyYU6QzrPqx42WHA04M581S-Fv4Ub34boFKRR0qVmulzHblb18v9g9FmXiuacpGyQMijNoe3r1yRvX3YVgd4_brfHe57uTEzkeD4B85WP8zFOD9ImMaO3R8_PBd2_DNceGdLNQa6LFBDi6tg2kyHvkoHo59AZ6wayJYIlC7L2C1ixlIbThSwiTrZEK5GK5lPdnrpqcdhZwdZguSR5FQ5ZFeKtGW2G5SFEQiqe_NmxWX__UlEJrutn8yTfskxd4JZ6fzk3Mi92UbLN7"/>
+</div>
+<span class="text-primary">KOR</span>
+</td>
+<td class="py-4 text-center text-on-surface">2</td>
+<td class="py-4 text-center text-on-surface font-mono">+1</td>
+<td class="py-4 text-center text-primary-container font-black">4</td>
+</tr>
+<tr class="border-b border-outline-variant/10">
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-outline-variant/20 rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="NGA" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtxC1JcRccAtJHRhQ6pE8O7ubiw_H3TYr7IZ6JbRXPlVspIEPxJZgJE0nX4v0Kaeee6KXOL4fUYZ_WEshq1gWyZoqrumAIcD7ehHSxcVkPxdR_EtH3pi2F3VR27VoC2_2cJSguKNE6wg9JX1EZ1hrekt5uZAigEwVdiEVl0RKvV7vjr49_jkqosDcTLmVTQmIUfIH6q_pq_tndrU9a45ALyLPU_ttuGRpqitOGv-lJ61iDT6ULT7X8rA9z0BHNkWsqJIZ_MMYbh4h0"/>
+</div>
+<span class="text-on-surface-variant">NGA</span>
+</td>
+<td class="py-4 text-center text-on-surface">2</td>
+<td class="py-4 text-center text-on-surface font-mono">-1</td>
+<td class="py-4 text-center text-on-surface-variant font-black">1</td>
+</tr>
+<tr>
+<td class="py-4 flex items-center gap-3">
+<div class="w-1 h-6 bg-outline-variant/20 rounded-full"></div>
+<div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+<img alt="GRE" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0EUK79NQ3Yt01U6s9N6cf3gHnxNJEZuh_gmlOnfEzLZypuuuHi4JHTZ5AFwwMd4p_QoVLfwf1hIEQaxTpDh-9COg65eXFA8MhLkHiEbbB6yJsBkmzx7etDsKeGsu7OBaMv72LZ6qu3x5jt82U36vtSxm1x5flFmhGKzv0ew4hrQy3xJYTxk8wuSBWkwNlB6qbn6fqQMbYSoQzlQeivlrEoAQexkk6Azu-11iA4RXO7hwUM3pHFlkPpS09i6pT3B5JXDqZxLdxzriU"/>
+</div>
+<span class="text-on-surface-variant">GRE</span>
+</td>
+<td class="py-4 text-center text-on-surface">2</td>
+<td class="py-4 text-center text-on-surface font-mono">-4</td>
+<td class="py-4 text-center text-on-surface-variant font-black">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Dynamically Rendered Groups C-L for demonstration -->
+<div class="contents" id="dynamic-groups"></div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/90 backdrop-blur-xl dark:bg-surface/90 border-t border-outline-variant/20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-data text-label-data">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-data text-label-data">Matches</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full py-1 px-4 scale-105 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="table_rows">table_rows</span>
+<span class="font-label-data text-label-data">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="sports_soccer">sports_soccer</span>
+<span class="font-label-data text-label-data">Teams</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-data text-label-data">My WC</span>
+</a>
+</nav>
+<script>
+        // Data for Dynamic Groups C-L
+        const groups = [
+            { id: 'C', teams: [{n:'BRA', gd: '+6', pts: 7, q: true}, {n:'ESP', gd: '+3', pts: 7, q: true}, {n:'JAP', gd: '-2', pts: 3, q: false}, {n:'SEN', gd: '-7', pts: 0, q: false}], flags: ['br', 'es', 'jp', 'sn'] },
+            { id: 'D', teams: [{n:'FRA', gd: '+4', pts: 9, q: true}, {n:'MAR', gd: '+1', pts: 4, q: true}, {n:'AUS', pts: 2, gd: '-2', q: false}, {n:'CAN', pts: 1, gd: '-3', q: false}], flags: ['fr', 'ma', 'au', 'ca'] },
+            { id: 'E', teams: [{n:'ENG', gd: '+5', pts: 9, q: true}, {n:'COL', gd: '+0', pts: 4, q: true}, {n:'DEN', gd: '-1', pts: 3, q: false}, {n:'CHI', gd: '-4', pts: 1, q: false}], flags: ['gb-eng', 'co', 'dk', 'cl'] },
+            { id: 'F', teams: [{n:'BEL', gd: '+2', pts: 6, q: true}, {n:'POR', gd: '+3', pts: 6, q: true}, {n:'GHA', gd: '+0', pts: 3, q: false}, {n:'URU', gd: '-5', pts: 3, q: false}], flags: ['be', 'pt', 'gh', 'uy'] },
+            { id: 'G', teams: [{n:'NED', gd: '+4', pts: 7, q: true}, {n:'CRO', gd: '+2', pts: 5, q: true}, {n:'ECU', gd: '-1', pts: 4, q: false}, {n:'QAT', gd: '-5', pts: 0, q: false}], flags: ['nl', 'hr', 'ec', 'qa'] },
+            { id: 'H', teams: [{n:'GER', gd: '+7', pts: 9, q: true}, {n:'SUI', gd: '+1', pts: 4, q: true}, {n:'SRB', gd: '-2', pts: 2, q: false}, {n:'CRC', gd: '-6', pts: 1, q: false}], flags: ['de', 'ch', 'rs', 'cr'] },
+            { id: 'I', teams: [{n:'ITA', gd: '+3', pts: 7, q: true}, {n:'TUN', gd: '+1', pts: 4, q: true}, {n:'UKR', gd: '-1', pts: 3, q: false}, {n:'PAN', gd: '-3', pts: 1, q: false}], flags: ['it', 'tn', 'ua', 'pa'] },
+            { id: 'J', teams: [{n:'AUT', gd: '+2', pts: 6, q: true}, {n:'SCO', gd: '+1', pts: 5, q: true}, {n:'ALG', gd: '+0', pts: 4, q: false}, {n:'HON', gd: '-3', pts: 1, q: false}], flags: ['at', 'gb-sct', 'dz', 'hn'] },
+            { id: 'K', teams: [{n:'NOR', gd: '+5', pts: 9, q: true}, {n:'SWE', gd: '+2', pts: 6, q: true}, {n:'EGY', gd: '-2', pts: 3, q: false}, {n:'JAM', gd: '-5', pts: 0, q: false}], flags: ['no', 'se', 'eg', 'jm'] },
+            { id: 'L', teams: [{n:'KSA', gd: '+3', pts: 7, q: true}, {n:'NGA', gd: '+1', pts: 6, q: true}, {n:'IRL', gd: '-1', pts: 3, q: false}, {n:'PAR', gd: '-3', pts: 1, q: false}], flags: ['sa', 'ng', 'ie', 'py'] }
+        ];
+
+        const container = document.getElementById('dynamic-groups');
+        
+        groups.forEach(group => {
+            const section = document.createElement('section');
+            section.className = 'glass-panel p-6 rounded-xl border-l-4 border-l-outline-variant/30 transition-all hover:scale-[1.02] duration-300';
+            
+            let rows = group.teams.map((t, idx) => `
+                <tr class="${idx < 3 ? 'border-b border-outline-variant/10' : ''} group/row transition-colors hover:bg-surface-container-high/50">
+                    <td class="py-4 flex items-center gap-3">
+                        <div class="w-1 h-6 ${t.q ? 'bg-primary-container' : 'bg-outline-variant/20'} rounded-full"></div>
+                        <div class="w-8 h-8 rounded-full border border-outline/30 overflow-hidden flex-shrink-0">
+                            <img src="https://flagcdn.com/${group.flags[idx]}.svg" alt="${t.n}" class="w-full h-full object-cover">
+                        </div>
+                        <span class="${t.q ? 'text-primary font-bold' : 'text-on-surface-variant'}">${t.n}</span>
+                    </td>
+                    <td class="py-4 text-center text-on-surface">3</td>
+                    <td class="py-4 text-center text-on-surface font-mono">${t.gd}</td>
+                    <td class="py-4 text-center ${t.q ? 'text-primary-container font-black' : 'text-on-surface-variant font-black'}">${t.pts}</td>
+                </tr>
+            `).join('');
+
+            section.innerHTML = `
+                <div class="flex justify-between items-end mb-6">
+                    <h3 class="font-headline-md text-headline-md text-primary">GROUP ${group.id}</h3>
+                    <span class="font-label-data text-label-data text-on-surface-variant opacity-50 uppercase tracking-tighter">Live Updates</span>
+                </div>
+                <div class="w-full">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="font-label-data text-label-data text-on-surface-variant opacity-60 border-b border-outline-variant/20">
+                                <th class="pb-3 font-medium">TEAM</th>
+                                <th class="pb-3 text-center font-medium">P</th>
+                                <th class="pb-3 text-center font-medium">GD</th>
+                                <th class="pb-3 text-center font-medium">PTS</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-label-match text-label-match">
+                            ${rows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            container.appendChild(section);
+        });
+    </script>
+</body></html>

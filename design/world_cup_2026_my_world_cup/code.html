@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My WC | FIFA World Cup 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@700;800;900&family=JetBrains+Mono:wght@500;600&family=Hanken+Grotesk:wght@400;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@100..900&family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#00363d",
+                    "surface-container-highest": "#30353b",
+                    "outline-variant": "#3b4b3d",
+                    "tertiary-fixed": "#ffdad2",
+                    "tertiary-fixed-dim": "#ffb4a2",
+                    "tertiary": "#fffaf9",
+                    "secondary-fixed-dim": "#00daf3",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#849584",
+                    "on-tertiary-fixed": "#3c0700",
+                    "surface-container-lowest": "#0a0f14",
+                    "secondary-fixed": "#9cf0ff",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "background": "#0f1419",
+                    "tertiary-container": "#ffd5cb",
+                    "surface-variant": "#30353b",
+                    "on-background": "#dee3ea",
+                    "on-tertiary-container": "#ba2a00",
+                    "surface": "#0f1419",
+                    "secondary": "#bdf4ff",
+                    "inverse-primary": "#006d35",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#00616d",
+                    "on-primary-container": "#007137",
+                    "on-secondary-fixed": "#001f24",
+                    "primary-fixed-dim": "#00e476",
+                    "on-secondary-fixed-variant": "#004f58",
+                    "surface-container-low": "#171c21",
+                    "primary-container": "#00ff85",
+                    "on-surface": "#dee3ea",
+                    "primary-fixed": "#61ff97",
+                    "surface-tint": "#00e476",
+                    "secondary-container": "#00e3fd",
+                    "on-primary-fixed-variant": "#005227",
+                    "surface-bright": "#353a3f",
+                    "on-primary": "#003919",
+                    "inverse-on-surface": "#2c3137",
+                    "surface-dim": "#0f1419",
+                    "surface-container-high": "#252a30",
+                    "surface-container": "#1b2025",
+                    "primary": "#f0ffee",
+                    "on-surface-variant": "#b9cbb9",
+                    "on-tertiary": "#621100",
+                    "on-tertiary-fixed-variant": "#8a1d00",
+                    "on-primary-fixed": "#00210c",
+                    "inverse-surface": "#dee3ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "16px",
+                    "xl": "48px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Anybody"],
+                    "label-match": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Anybody"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-data": ["JetBrains Mono"],
+                    "headline-md": ["Anybody"],
+                    "headline-lg": ["Anybody"]
+            },
+            "fontSize": {
+                    "display-lg": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                    "label-match": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-data": ["12px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0F14;
+            color: #DEE3EA;
+            font-family: 'Hanken Grotesk', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(26, 32, 38, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .live-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .pitch-gradient {
+            background: linear-gradient(135deg, #00e476 0%, #006d35 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-surface/80 border-b border-outline-variant/20 fixed top-0 w-full z-50 flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop">
+<div class="font-headline-md text-headline-md font-black tracking-tighter text-primary dark:text-primary-fixed-dim">
+            FIFA World Cup 2026
+        </div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:text-secondary-container transition-colors active:scale-95 transition-transform" data-icon="search">search</button>
+<button class="material-symbols-outlined text-primary hover:text-secondary-container transition-colors active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary-container">
+<img alt="User profile" data-alt="A professional close-up portrait of a passionate football fan wearing a subtle team scarf. The lighting is dramatic and moody with a neon green rim light that matches the athletic Pitch Green brand identity. The background is a soft-focus stadium interior during twilight, emphasizing a high-energy yet sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL0h5Jysqr5Dzp3nVNuzRDh8J2w3GQMNvMoH7F2_hQt6KiN5Ib2XUGJyn-AJWW8k6_q9kFzQyBDOzKDHfuf5JJo9zKeLh0FEAC6zhDnKryZSpO_bW7Leyxe3Y45tU_P_rd8Iojug5bvg_YYFrqdKu5Xzyt3qjgVcVc44B6gGfY2RkE4MwtxJ3_SY3KFgdjSU6J-jpWlrl-bpQ-H6mrp7Cx28VuJc7U9ANWlWvP-fJgKu-7ChQ7pSxhtAgfRBT-NK0OXs4Ffl3WDS1k"/>
+</div>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto space-y-xl">
+<!-- Hero / Header -->
+<section class="py-md">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Welcome back, Alex</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-sm">Your personalized World Cup hub. Tracking USA, Argentina, and Mexico's journey to the final.</p>
+</section>
+<!-- My Teams -->
+<section>
+<div class="flex items-center justify-between mb-md">
+<h2 class="font-headline-md text-headline-md text-primary-fixed-dim">My Teams</h2>
+<button class="text-secondary-fixed text-label-data font-label-data flex items-center gap-xs">
+                    EDIT <span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-xs">
+<!-- Team: USA -->
+<div class="flex-shrink-0 group cursor-pointer">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-primary-container p-1 bg-surface-container relative">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="USA" class="w-full h-full object-cover" data-alt="A high-resolution, detailed close-up of the United States national flag with vibrant red, white, and blue colors. The fabric texture is visible, suggesting a premium match-day flag. The lighting is bright and clean, fitting a modern athletic UI with a subtle cinematic shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPcSt-H--lDhi_q0gIhs04kuc4Lp-Ai-3SozF12i04jxa59eSyhC3ir4xs0XJ9iDDDzF3njgupCOg-ftwi3bFaNzV3EZgHJrejMNQpX-rQf2UqRmza8hAa6HDt2Q-UfY5DqlMq2a3dt6GGNxrbEOkROtCFvg95jHdSXqkaO9tayoMZfMfszZKmUvULZuOTjNA6boI4Ri-iH5-Z3UKYhpxdNMd0BF9dXjYMi3iOfZTQcXusQ5S9V3iK-IDr0JdseCbTWHum4EjM2xv3"/>
+</div>
+</div>
+<p class="text-center mt-sm font-label-match text-label-match text-on-surface uppercase">USA</p>
+</div>
+<!-- Team: ARG -->
+<div class="flex-shrink-0 group cursor-pointer">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-outline/30 p-1 bg-surface-container hover:border-secondary-container transition-all">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Argentina" class="w-full h-full object-cover" data-alt="A stylized and sharp close-up of the Argentine national flag featuring the Sun of May. The colors are crisp light blue and white with a rich texture. The composition is centered and clean, optimized for a circular UI badge within a high-contrast dark mode dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnjH1YU9PSba3hH79qju9HkNYaFWEB72ZkRdgXiuGaUwF2grBvbLTba6ubZlIxQJfCmX0U7yaGyRvyAex1WcGxYhEmBzrrgomDvkeQGk8WJqCOn3fMGEyneG7L7n_eaZm7_vkOia9aBt1DTPOLmrLyXY8pFW8LkLlpWU3jBXGq0KMVI5Vpbw1QJbftS_hurCKygycycirngZ_Go2kGkAvilDaFKGip-f-uJWcDe0_U7Fw4-2C_au7oxfFTNTyuxq3SjpuUDBBeYr1x"/>
+</div>
+</div>
+<p class="text-center mt-sm font-label-match text-label-match text-on-surface-variant uppercase">ARG</p>
+</div>
+<!-- Team: MEX -->
+<div class="flex-shrink-0 group cursor-pointer">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-outline/30 p-1 bg-surface-container hover:border-secondary-container transition-all">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Mexico" class="w-full h-full object-cover" data-alt="A vibrant and high-contrast image of the Mexican national flag, showcasing the deep green, white, and red stripes with the central eagle emblem. The fabric is sharp and the colors are saturated to stand out against a dark obsidian background in a premium sports app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaUJOIvw32i4POMVP6IFxcAiTZVs9sS8FiViflHJzrcwxgVbDBDOMbSDlNiWhNrCES8G7TIDXoO_htZjP-ypDSdEGtc0IG1d8obS51Jn8S5BA_jWh1oMsZMc9bTm00-BIWv0UIz7Xo8-wXR6C1s_I4gTXhg75xGJLzRUpBlqPlYYa7Sxsp0_JNVFXHOx3rtFE18wwkPA6icQcG-PbYCsDsPHLFcdTG9fc49trZdvY8eKzE8Pc8CiDsipDIIMCIHBg62jM4HMGzAWO_"/>
+</div>
+</div>
+<p class="text-center mt-sm font-label-match text-label-match text-on-surface-variant uppercase">MEX</p>
+</div>
+<!-- Add More -->
+<div class="flex-shrink-0 group cursor-pointer">
+<div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center bg-surface-container-low hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-outline">add</span>
+</div>
+<p class="text-center mt-sm font-label-match text-label-match text-outline uppercase">Add</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Personalized Schedule & Group Standings -->
+<div class="lg:col-span-2 space-y-xl">
+<!-- Personalized Schedule -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Upcoming For You</h2>
+<div class="space-y-md">
+<!-- Match Card: Live -->
+<div class="bg-surface-container p-md border-l-4 border-primary-container relative group">
+<div class="absolute top-md right-md flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary-container live-pulse"></span>
+<span class="font-label-match text-label-match text-primary-container uppercase">Live • 64'</span>
+</div>
+<div class="flex items-center justify-between max-w-md mx-auto md:mx-0">
+<div class="flex flex-col items-center gap-sm">
+<img alt="ARG" class="w-12 h-12 rounded-full border border-surface-variant shadow-lg" data-alt="A circular badge of the Argentina national flag, rendered with high detail and sharp edges. The light blue and white stripes are clean and vibrant, designed for a modern sports interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxa_Vj2BtpYR1KU3UEKSwWxZeIx3xQX2Vn7kCyn2O3CgUo_IqvwcXT2jZSdirSc9OXedkPfCCg6Fpre2Qx8OfbXnRDbt5zWY3De22HZdlUghx3uS-7gsC0V9UopBQ0gW-D_yKR-s_ZIayF-Myxh3X0fnrcy5nFlQ8vhMaHj7v5xT7V5pgKeW4TngE4hECNCQk-8Uf41NQ0CShlkEN6d9nDV0z1Y0OdoXF843dZTkTZQjWX9lgmymF9FkAcHfNuAu25wQqkDO-LfZnY"/>
+<span class="font-label-match text-label-match uppercase tracking-widest">ARG</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-data text-label-data text-on-surface-variant mb-1">GROUP C</span>
+<div class="font-label-match text-[32px] md:text-[48px] font-black flex items-center gap-md">
+<span>2</span>
+<span class="text-outline-variant">:</span>
+<span>1</span>
+</div>
+</div>
+<div class="flex flex-col items-center gap-sm">
+<img alt="POL" class="w-12 h-12 rounded-full border border-surface-variant" data-alt="A circular badge of the Poland national flag, showing its simple red and white design in high resolution. The image is clean and optimized for a dark-themed sports dashboard with subtle elevation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Bx1p6-8jSuqzf4o9YNN5FaT_tPfpG-4UdoLmKcp3MO8TI-VIGDTmbfSLCrnJFY_Gv6v15r6WzuqO-q2VPmml7EsRnUSooJ5LaLC6meHTAMP_Wxvp6xBYYvwCdG1qIy8BM452Hwbcv9W4ZAIJTOjQniypr1cGpvdxFvxC5Jq3lgVat0gsyu33JnWqTyYImF4HsKeXfX-y6KvgBE4pttYpRr3SelfscHT3qyzjuh-LIreBIyo10hsea_pm1Mrs9ABfJAJNMUDmcbrH"/>
+<span class="font-label-match text-label-match uppercase tracking-widest">POL</span>
+</div>
+</div>
+<div class="mt-md flex justify-between items-center text-label-data font-label-data text-on-surface-variant uppercase">
+<span>MetLife Stadium, NJ</span>
+<button class="text-primary-container font-bold hover:underline transition-all">MATCH CENTER</button>
+</div>
+</div>
+<!-- Match Card: Scheduled -->
+<div class="bg-surface-container p-md border-l-4 border-secondary-container/20 group hover:border-secondary-container transition-all">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="MEX" data-alt="High-detail circular icon of the Mexican flag for a sports app UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8AEtML4mh224Zi389AqDUFrnSFL3H86RnV1X0CWncrhhhXXLRSNtqRFZ3oMqu_c_bXRpPtWhLuWeZ6sT3l-oLKzDunwKa2llTJwUdwzM-I0_S6JaKi0w2gUoM1aJbF2n028Su5yzid9DU0Mvq0ylTEdgtwOV2K2yjLMVSL4uPs1yEgc-MNFnUrDM5O00egyJmpeONNJOurzh-Qz1Irg9ZigmjYKgXlJkbwZZ8qynO7EpprXY0nK2w0HqjJwOAkiJfMlTLhczba4z5"/>
+</div>
+<span class="font-label-match text-label-match">MEXICO</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-label-data text-label-data text-secondary-fixed">TOMORROW</span>
+<span class="font-label-match text-headline-md">20:00</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-match text-label-match">CANADA</span>
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center overflow-hidden">
+<img alt="CAN" data-alt="High-detail circular icon of the Canadian flag for a sports app UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArPAAFNmksgiZwfOD-fLFC4_TLCxBlaOcgO1F4IYYDsYm3cSGxNYrMFvL2UpcAMFXn_sHSNjavf-eJoHOGKzy2SQ4hgskVwvHaWMw5ETNXteXIH2p2GWmpdDoeVc9kukj-ELrMVre_NcaR5IXLQYHFDRQLSs1RK1qWm4UiYBuXw3Ym0Xlx6FZsNawGSKm_R9cy142Tn22oM3HU-z1KIuNBoF1mjVRWLSwsIAjptK5ebV-BU1UwUdPvuKBpoce0p0zTKSNQJv0klxZH"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Followed Group Standings -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">Group Standings</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Group A Widget -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="bg-surface-container-highest px-md py-sm flex justify-between items-center">
+<span class="font-label-match text-label-match text-primary-fixed-dim uppercase">Group A</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer">chevron_right</span>
+</div>
+<div class="p-0">
+<table class="w-full text-left font-label-data text-label-data">
+<thead class="text-on-surface-variant opacity-60">
+<tr>
+<th class="px-md py-xs">#</th>
+<th class="py-xs">TEAM</th>
+<th class="py-xs">P</th>
+<th class="px-md py-xs text-right">PTS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="bg-primary/5 border-l-4 border-primary-container">
+<td class="px-md py-sm font-bold">1</td>
+<td class="py-sm">USA</td>
+<td class="py-sm">2</td>
+<td class="px-md py-sm text-right font-bold">6</td>
+</tr>
+<tr>
+<td class="px-md py-sm">2</td>
+<td class="py-sm text-on-surface">NED</td>
+<td class="py-sm">2</td>
+<td class="px-md py-sm text-right">4</td>
+</tr>
+<tr>
+<td class="px-md py-sm">3</td>
+<td class="py-sm text-on-surface">SEN</td>
+<td class="py-sm">2</td>
+<td class="px-md py-sm text-right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Group C Widget -->
+<div class="bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/10">
+<div class="bg-surface-container-highest px-md py-sm flex justify-between items-center">
+<span class="font-label-match text-label-match text-primary-fixed-dim uppercase">Group C</span>
+<span class="material-symbols-outlined text-sm text-on-surface-variant cursor-pointer">chevron_right</span>
+</div>
+<div class="p-0">
+<table class="w-full text-left font-label-data text-label-data">
+<thead class="text-on-surface-variant opacity-60">
+<tr>
+<th class="px-md py-xs">#</th>
+<th class="py-xs">TEAM</th>
+<th class="py-xs">P</th>
+<th class="px-md py-xs text-right">PTS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="bg-primary/5 border-l-4 border-primary-container">
+<td class="px-md py-sm font-bold">1</td>
+<td class="py-sm">ARG</td>
+<td class="py-sm">2</td>
+<td class="px-md py-sm text-right font-bold">6</td>
+</tr>
+<tr>
+<td class="px-md py-sm">2</td>
+<td class="py-sm text-on-surface">MEX</td>
+<td class="py-sm">2</td>
+<td class="px-md py-sm text-right">3</td>
+</tr>
+<tr>
+<td class="px-md py-sm">3</td>
+<td class="py-sm text-on-surface">POL</td>
+<td class="py-sm">2</td>
+<td class="px-md py-sm text-right">3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Team News Feed & CTA -->
+<div class="space-y-xl">
+<!-- Team News Feed -->
+<section>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">The Feed</h2>
+<div class="space-y-md">
+<!-- News Item 1 -->
+<article class="group cursor-pointer">
+<div class="relative h-40 rounded-xl overflow-hidden mb-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic action shot of an American football player celebrating a goal in a packed stadium. The scene is flooded with green and blue stadium lights, capturing the intensity and energy of a World Cup match. High contrast and technical clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_OtTt6EDX5mm--D7v4sF6tB1h3UmfJ61vXtEXZPjq6XMWHJavguwT85HouZXfgQUSYkURs8Wbp4f1JE6wpU-ib8jaceE1wky05_jJnPAE9QYIzDVy52j5LAX34syX2HI-6EI8vU-w4qHYyrEyHm9kV5CUOrymXTz8Fkww73twTzhi0LV37vedGoNpplBDSInbH66wwu1UIi8pAfJNffkTtC2zrpPMNhSM_dMjOBMXGzcm6ERFEMi3H-Y1x9Ybnjh5zSUuewxnwjhh"/>
+<div class="absolute top-2 left-2 bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full font-label-data text-[10px] uppercase font-bold">USA</div>
+</div>
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface group-hover:text-primary-container transition-colors">Pulisic confirmed fit for decisive clash in Los Angeles</h3>
+<p class="text-label-data text-on-surface-variant mt-1">2 HOURS AGO</p>
+</article>
+<!-- News Item 2 -->
+<article class="group cursor-pointer">
+<div class="relative h-40 rounded-xl overflow-hidden mb-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A dramatic wide shot of a stadium crowd in Argentina, with thousands of fans waving flags and setting off light blue and white smoke flares. The image is atmospheric and gritty, evoking a deep sense of national pride and competitive spirit." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt3hGTBE-AxwP9uwbkCPr3pule8mO4WIcRobZrDdfXCovPJkMGoErop5mMLAmI-lZwGlmdofvzDlpSlPKdFihCCdy1Lx77fVBiAGKLTpxWUhhzfySfhHHLCyx5XmMH6SXo1AulhlEhGxyc0ObgMCwUavZdbQM-OkfJJKpBAgzvqKIbAc1rkgK5_Lhe1Z3ses5aqT3S0VmJha_2lw41tLwLKh-ao6Ov1RZAGbmTBVGWlH9iRqfwhJzENClCLZ3O2jGfx47pwPOAbZAK"/>
+<div class="absolute top-2 left-2 bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-label-data text-[10px] uppercase font-bold">ARG</div>
+</div>
+<h3 class="font-headline-md text-[18px] leading-tight text-on-surface group-hover:text-primary-container transition-colors">Messi's Last Dance: How fans are taking over Dallas</h3>
+<p class="text-label-data text-on-surface-variant mt-1">5 HOURS AGO</p>
+</article>
+</div>
+<button class="w-full mt-md py-sm border-2 border-outline-variant text-label-match text-label-match hover:bg-outline-variant/10 transition-colors rounded-lg">VIEW ALL NEWS</button>
+</section>
+<!-- Discover More CTA -->
+<section class="bg-primary-container p-lg rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-on-primary-container rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary-container text-3xl">explore</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-primary-container mb-xs">Expand Your WC</h2>
+<p class="font-body-md text-body-md text-on-primary-container/80 mb-md">Follow more nations to unlock detailed stats and personalized alerts.</p>
+<button class="bg-on-primary-container text-primary-container font-label-match text-label-match px-xl py-md rounded-full hover:scale-105 transition-transform">EXPLORE ALL TEAMS</button>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe bg-surface/90 backdrop-blur-xl dark:bg-surface/90 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-data text-label-data">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-data text-label-data">Matches</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="table_rows">table_rows</span>
+<span class="font-label-data text-label-data">Groups</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 transition-opacity active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="sports_soccer">sports_soccer</span>
+<span class="font-label-data text-label-data">Teams</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full py-1 px-4 scale-105 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-data text-label-data">My WC</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for list item clicks
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.add('scale-95');
+                setTimeout(() => item.classList.remove('scale-95'), 100);
+            });
+        });
+    </script>
+</body></html>
